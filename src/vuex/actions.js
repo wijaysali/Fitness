@@ -2,7 +2,6 @@ import * as types from './mutations-types'
 import * as client_api  from './store-client-api'
 import getters from './getters'
 
-//获取最新发布的文章
 export const FETCH_ITEMS = ({ commit, state }, { type, currentPage }) => {
 	if(!!type) {
 		return client_api.fetchItem(type, state.pageSize, currentPage)
@@ -18,7 +17,7 @@ export const FETCH_ITEMS = ({ commit, state }, { type, currentPage }) => {
 	}
 }
 
-//查找该用户是否已注册
+
 export const SAME_USERNAME = ({commit, state}, {value}) => {
 	if(!!value) {
 		return client_api.findSameUser(value)
@@ -33,7 +32,7 @@ export const SAME_USERNAME = ({commit, state}, {value}) => {
 	}
 }
 
-//注册用户
+
 export const REGISTER_USER = ({commit, state}, {data}) => {
 	return client_api.registerUser(data)
 		.then((res) => {
@@ -44,7 +43,7 @@ export const REGISTER_USER = ({commit, state}, {data}) => {
 		})
 }
 
-//用户登录
+
 export const LOGIN_USER = ({commit, state}, {data}) => {
 	return client_api.loginUser(data)
 		.then((res) => {
@@ -73,7 +72,7 @@ export const GET_ALL_PLANS = ({commit, state}, {date}) => {
 			throw err
 		})
 }
-//获取当月是否设置月计划,若有则返回
+
 export const GET_WEEK_PLAN = ({commit, state}, {data}) => {
 	return client_api.getWeekPlan(data)
 		.then((res) => {
@@ -84,7 +83,7 @@ export const GET_WEEK_PLAN = ({commit, state}, {data}) => {
 		})
 }
 
-//获取当周是否设置周计划,若有则返回
+
 export const GET_MONTH_PLAN = ({commit, state}, {data}) => {
 	return client_api.getMonthPlan(data)
 		.then((res) => {
@@ -95,7 +94,7 @@ export const GET_MONTH_PLAN = ({commit, state}, {data}) => {
 		})
 }
 
-//设置计划数
+
 export const SET_PLAN_NUM = ({commit, state}, {data}) => {
 	return client_api.setPlanNum(data)
 		.then((res) => {
@@ -110,7 +109,7 @@ export const SET_PLAN_NUM = ({commit, state}, {data}) => {
 }
 
 
-//查询今日训练情况
+
 export const GET_TODAY_COMPLETE = ({commit, state}, {date}) => {
 	const data = {
 		date,
@@ -127,7 +126,7 @@ export const GET_TODAY_COMPLETE = ({commit, state}, {date}) => {
 		})
 }
 
-//设置今日训练情况
+
 export const SET_TODAY_COMPLETE = ({commit, state}, {date, value, ptype}) => {
 	const data = {
 		date,
@@ -149,7 +148,7 @@ export const SET_TODAY_COMPLETE = ({commit, state}, {date, value, ptype}) => {
 		})
 }
 
-//获取该类型的本月训练情况
+
 export const GET_MONTH_NUM_BY_TYPE = ({commit, state}, {date, ptype}) => {
 	const data = {
 		date,
@@ -167,7 +166,7 @@ export const GET_MONTH_NUM_BY_TYPE = ({commit, state}, {date, ptype}) => {
 		})
 }
 
-//校验当前用户名和密码是否一致
+
 export const VALIDATE_NAME_AND_PWD = ({commit, state}, {pwd}) => {
 	const data = {
 		uid: state.userId,
@@ -189,7 +188,7 @@ export const VALIDATE_NAME_AND_PWD = ({commit, state}, {pwd}) => {
 		})
 }
 
-//保存当前用户设置
+
 export const SAVE_USER_INFO = ({commit, state}, {data}) => {
 	return client_api.saveUserInfo(data)
 		.then((res) => {
@@ -203,7 +202,7 @@ export const SAVE_USER_INFO = ({commit, state}, {data}) => {
 		})
 }
 
-//获取周/月排行榜
+
 export const GET_TOP_ALL_RANK = ({commit, state}, {weekDate, monthDate}) => {
 	const data = {
 		weekDate,

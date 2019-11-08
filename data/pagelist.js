@@ -16,11 +16,11 @@ const listSchema = new Schema({
 
 listSchema.statics.findItemsByType = function(type, size, curPage, cb) {
 	if(type === 'newPub') {
-		console.log('---最新三天发布的文章---')
+		console.log('Last Three Days Articles')
     const update_now = Date.now() - 3*1000*60*60*24;
 		return this.find({'update_at':{'$gt':new Date(update_now)}}).sort({'update_at':-1}).limit(size).skip((curPage - 1)*size).exec(cb)
 	} else if(type === 'hotPub') {
-    console.log('---最热门的文章---')
+    console.log('Popular Articles')
     return this.find({}).sort({'pointCount':-1}).limit(size).skip((curPage - 1)*size).exec(cb)
   }
 }

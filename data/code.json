@@ -1,40 +1,40 @@
 {
 	"code": [
 		{
-			"400": "用户不存在"
+			"400": "Bad Request"
 		},
 		{
-			"401": "登录失败"
+			"401": "Unauthorized"
 		},
 		{
-			"402": "更新异常"
+			"402": "Payment Required Error"
 		},
 		{
-			"403": "注册失败"
+			"403": "Forbidden"
 		},
 		{
-			"404": "查询获取失败"
+			"404": "Not Found"
 		},
 		{
-			"405": "删除失败"
+			"405": "Methode Not Allowed"
 		},
 		{
-			"200": "登录成功"
+			"200": "OK"
 		},
 		{
-			"201": "注册成功"
+			"201": "Created"
 		},
 		{
-			"202": "更新成功"
+			"202": "Accepted"
 		},
 		{
-			"203": "查询获取成功"
+			"203": "Non-Authoritative Information"
 		},
 		{
-			"204": "删除成功"
+			"204": "No Content"
 		},
 		{
-			"300": "用户计划为空"
+			"300": "Multiple Choice"
 		}
 	]
 }

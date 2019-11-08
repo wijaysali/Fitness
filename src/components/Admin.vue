@@ -46,53 +46,53 @@
 				<div class="content-edit-block">
 					<mu-flexbox>
 						<mu-flexbox-item class="field-label" grow="2">
-							<label for="">密码:</label>
+							<label for="">Password:</label>
 						</mu-flexbox-item>
 						<mu-flexbox-item class="" grow="3">
-							<mu-text-field hintText="请修改密码" type="password" @input="inputUpwd"/>
+							<mu-text-field hintText="Change your password" type="password" @input="inputUpwd"/>
 						</mu-flexbox-item>
 					</mu-flexbox>
 					<mu-flexbox>
 						<mu-flexbox-item class="field-label" grow="2">
-							<label for="">年龄:</label>
+							<label for="">Age:</label>
 						</mu-flexbox-item>
 						<mu-flexbox-item class="" grow="3">
-							<mu-text-field hintText="请修改年龄" type="number" @input="inputUage"/>
+							<mu-text-field hintText="Change your age" type="number" @input="inputUage"/>
 						</mu-flexbox-item>
 					</mu-flexbox>
 					<mu-flexbox>
 						<mu-flexbox-item class="field-label" grow="2">
-							<label for="">手机号码:</label>
+							<label for="">Phone Number:</label>
 						</mu-flexbox-item>
 						<mu-flexbox-item class="" grow="3">
-							<mu-text-field hintText="请修改手机号码" type="number" :errorText="phoneErrorMsg" @blur="validatePhone" @input="inputUphone"/>
+							<mu-text-field hintText="Change your Phone Number" type="number" :errorText="phoneErrorMsg" @blur="validatePhone" @input="inputUphone"/>
 						</mu-flexbox-item>
 					</mu-flexbox>
 					<mu-flexbox>
 						<mu-flexbox-item class="field-label" grow="2">
-							<label for="">电子邮箱:</label>
+							<label for="">E-mail:</label>
 						</mu-flexbox-item>
 						<mu-flexbox-item class="" grow="3">
-							<mu-text-field hintText="请修改电子邮箱" type="email" :errorText="mailErrorMsg" @blur="validateEmail" @input="inputUmail"/>
+							<mu-text-field hintText="Change your E-mail" type="email" :errorText="mailErrorMsg" @blur="validateEmail" @input="inputUmail"/>
 						</mu-flexbox-item>
 					</mu-flexbox>
 					<mu-flexbox>
 						<mu-flexbox-item>
-							<mu-flat-button primary @click="editSubmit" label="确定" class="edit-submit-button"/>
+							<mu-flat-button primary @click="editSubmit" label="submit" class="edit-submit-button"/>
 						</mu-flexbox-item>
 						<mu-flexbox-item>
-		    				<mu-flat-button @click="editCancel" primary label="取消" class="edit-cancel-button"/>
+		    				<mu-flat-button @click="editCancel" primary label="cancel" class="edit-cancel-button"/>
 						</mu-flexbox-item>
 					</mu-flexbox>
 				</div>
 			  </mu-dialog>
-			  <mu-snackbar v-if="promptSnackbar" :message="promptInfo" action="关闭" @actionClick="hideSnackbar" @close="hideSnackbar"/>
+			  <mu-snackbar v-if="promptSnackbar" :message="promptInfo" action="close" @actionClick="hideSnackbar" @close="hideSnackbar"/>
 			</div>
 		</div>
-		<mu-dialog :open="showDialog" title="提示" bodyClass="dialog-body">
+		<mu-dialog :open="showDialog" title="prompt" bodyClass="dialog-body">
 		    {{promptMessage}}
-		    <mu-flat-button slot="actions" primary @click="submitOpera" label="确定"/>
-		    <mu-flat-button slot="actions" @click="cancelOpera" primary label="取消"/>
+		    <mu-flat-button slot="actions" primary @click="submitOpera" label="Submit"/>
+		    <mu-flat-button slot="actions" @click="cancelOpera" primary label="Cancel"/>
 		</mu-dialog>
 	</div>
 </template>
@@ -146,7 +146,7 @@
 			},
 			logOut() {
 				this.showDialog = true
-				this.promptMessage = '确定要退出登录吗?'
+				this.promptMessage = 'Are you sure want to exit?'
 				this.dialogType = 'LOG_OUT'
 			},
 			submitOpera() {
@@ -189,12 +189,12 @@
 						this.tabelItems = this.tabelItems.filter((v) => {
 							return v.name !== uname
 						})
-						this.promptInfo = '删除成功'
+						this.promptInfo = 'Deleted'
 						this.showSnackbar()
 					}
 
 				}).catch((err) => {
-					this.promptInfo = '删除失败'
+					this.promptInfo = 'Failed to delete'
 					this.showSnackbar()
 					console.log(err)
 				})
@@ -224,10 +224,10 @@
 						.then((rescode) => {
 							if(rescode === 202) {
 								this.showSnackbar()
-								this.promptInfo = '修改成功'
+								this.promptInfo = 'Success'
 							} else {
 								this.showSnackbar()
-								this.promptInfo = '修改失败'
+								this.promptInfo = 'Not Success'
 							}
 						})
 						.catch((err) => {
@@ -247,7 +247,7 @@
 				const exp = new RegExp('^0?(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$','g')
 				if(value) {
 					if(!exp.test(value)) {
-						this.phoneErrorMsg = '手机号码格式不正确'
+						this.phoneErrorMsg = 'Your Phone Number is wrong'
 						return false
 					}
 				}
@@ -259,7 +259,7 @@
 				const exp = new RegExp('^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$','g')
 				if(value) {
 					if(!exp.test(value)) {
-						this.mailErrorMsg = '邮箱格式不正确'
+						this.mailErrorMsg = 'Your Email is wrong'
 						return false
 					}
 				}

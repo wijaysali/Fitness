@@ -7,13 +7,13 @@ import getters from './getters'
 
 Vue.use(Vuex);
 
-//需要维护的状态
+
 const state = {
-	cpTypeItem: [],     //各list组件id
+	cpTypeItem: [],     
 	activeType: null,
 	pageSize: 2,
 	user: {},
-	userIntro: '这个家伙很懒,什么也没留下',
+	userIntro: 'Lazy People',
 	userImage: require('../static/images/img.png'),
 	userlogIn: false,
 	userId: null,
@@ -27,7 +27,7 @@ const state = {
 	},
 	fieldPlans: [
 		{
-			cname:'引体向上',
+			cname:'Pull',
 			class:'pullup',
 			ename:'Pullups',
 			todayCompleted:false,
@@ -40,7 +40,7 @@ const state = {
 			dayCounts: 0
 		},
 		{
-			cname:'俯卧撑',
+			cname:'Push',
 			class:'pushup',
 			ename:'Pushups',
 			todayCompleted:false,
@@ -53,7 +53,7 @@ const state = {
 			dayCounts: 0
 		},
 		{
-			cname:'仰卧起坐',
+			cname:'Sit',
 			class:'situp',
 			ename:'Situps',
 			todayCompleted:false,
@@ -66,7 +66,7 @@ const state = {
 			dayCounts: 0
 		},
 		{
-			cname:'深蹲',
+			cname:'Squat',
 			class:'squat',
 			ename:'Squats',
 			todayCompleted:false,

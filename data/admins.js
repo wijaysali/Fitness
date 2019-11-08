@@ -12,8 +12,8 @@ const adminSchema = new Schema({
 		required: true
 	},
 	historys: [{
-		type: Number,                               //处理类型: 0 -> 删除用户, 1 -> 修改用户信息
-		name: String                                //用户名
+		type: Number,                             
+		name: String                                
 	}],
 	level: Number,
 	created_at: { type : Date, default : Date.now },

@@ -69,7 +69,7 @@
 			      	},
 			        tooltip : {
 				        formatter: function(params) {
-				        	return "类型: "+params.seriesName+" <br/>"+params.seriesName+" : "+params.value+" 个"
+				        	return "type: "+params.seriesName+" <br/>"+params.seriesName+" : "+params.value+" 个"
 				        }
 				    },
 				    series: [
@@ -102,7 +102,7 @@
 				            },
 				            data: [{
 				            	value: this.currentValue,
-				            	name: '计划设置百分比'
+				            	name: 'prepare setting'
 				            }]
 				        }
 				    ],
@@ -116,10 +116,10 @@
 				this.cachePlans = [plan.weeklyPlan,plan.monthlyPlan]
 				if(this.cachePlans[0] && this.cachePlans[1]) {
 					this.switchDisabled = false
-					this.planName = currentType === 0 ? '周计划' : '月计划'
+					this.planName = currentType === 0 ? 'Weekly' : 'Weekly'
 					this.maxVal = currentType === 0 ? plan.weekMax : plan.monthMax
 				} else {
-					this.planName = currentType === 0 ? '周计划' : '月计划'
+					this.planName = currentType === 0 ? 'Weekly' : 'Weekly'
 					this.switchDisabled = true
 					this.maxVal = currentType === 0 ? plan.weekMax : plan.monthMax
 				}

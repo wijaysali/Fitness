@@ -2,13 +2,13 @@
 	<main>
 		<div class="item-title">|&emsp;{{fieldPlan.cname}}&emsp;|</div>
 		<div class="item-set-body" v-if="isSet">
-			<!--展示本月三十天的健身情况-->
+		
 			<chart :options="polar"></chart>
 		</div>
 		<div class="item-noset-body" v-else>
-			<!--没填写今日计划信息-->
+		
 			<div class="noset-container">
-				<span class="noset-title">请输入今日训练成果: </span>
+				<span class="noset-title">Input your exercise today: </span>
 				<mu-text-field type="text" class="number-field" :value="curVal" @input="inputVal"/>
 				<mu-raised-button label="确定" class="submitBtn" primary @click="submitValue"/>
 			</div>
@@ -67,7 +67,7 @@
 					value: this.curVal,
 					ptype: this.ptype
 				}).then((rescode) => {
-					if(rescode === 202) {        //设置成功
+					if(rescode === 202) {        
 						const index = this.xDateData.indexOf(date.slice(-2))
 						this.yData[index] = parseInt(this.curVal)
 						this.setPropsData()
@@ -103,11 +103,11 @@
 					color: ['#ffa726'],
 				    tooltip : {
 				        trigger: 'axis',
-				        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-				            type : 'shadow',        // 默认为直线，可选为：'line'
+				        axisPointer : {            
+				            type : 'shadow',        
 				            snap : true
 				        },
-				        formatter: '日期: '+common_api.getRecentMonthDay().slice(0,4)+'年'+common_api.getRecentMonthDay().slice(4,6)+'月'+'{b}日<br/>{a}: {c}'
+				        formatter: 'Date: '+common_api.getRecentMonthDay().slice(0,4)+'Year'+common_api.getRecentMonthDay().slice(4,6)+'Month'+'{b}Day<br/>{a}: {c}'
 				    },
 				    grid: {
 				    	top: '10%',
@@ -120,7 +120,7 @@
 				        {
 				            type : 'category',
 				            data : this.xDateData,
-				            name: '日',
+				            name: 'Day',
 				            axisTick: {
 				                alignWithLabel: true
 				            }
@@ -134,7 +134,7 @@
 				    ],
 				    series : [
 				        {
-				            name: '当日'+this.fieldPlan.cname+'训练值',
+				            name: 'today'+this.fieldPlan.cname+'mark',
 				            type:'bar',
 				            barWidth: '60%',
 				            data:this.yData,

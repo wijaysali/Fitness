@@ -22,7 +22,7 @@
 			</div>
 			<div class="week-panel" v-else>
 				<div class="null-data">
-					暂无数据!
+					Empty-Data!
 				</div>
 			</div>
 		</div>
@@ -48,7 +48,7 @@
 			</div>
 			<div class="month-panel" v-else>
 				<div class="null-data">
-					暂无数据!
+					Empty-Data!
 				</div>
 			</div>
 		</div>

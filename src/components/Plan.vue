@@ -5,10 +5,10 @@
 			<info-pl-picker></info-pl-picker>
 			<mu-dialog :open="openDialog" @close="close" :title="'设置'+title_type">
 				<mu-content-block>
-					您暂未设置{{title_type}},是否前往设置?
+					you have not set{{title_type}},wanna go to your setting?
 				</mu-content-block>
-				<mu-flat-button slot="actions" primary @click="setWeeklyPlan" label="确定" class="dialog-btn"/>
-				<mu-flat-button slot="actions" @click="cancelWeeklyPlan" primary label="取消" class="dialog-btn"/>	
+				<mu-flat-button slot="actions" primary @click="setWeeklyPlan" label="submit" class="dialog-btn"/>
+				<mu-flat-button slot="actions" @click="cancelWeeklyPlan" primary label="cancel" class="dialog-btn"/>	
 	   				
 			</mu-dialog>
 		</div>

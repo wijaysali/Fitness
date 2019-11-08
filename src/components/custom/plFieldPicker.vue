@@ -6,11 +6,11 @@
 					<span class="pl-icon-title">{{fieldPlan.ename}}</span>
 					<span class="pl-icon"></span>
 					<div class="pl-msg animated pluse" v-if="disableBtn&&activeConfig!==fieldPlan.type">
-						<span class="pl-msg-warning animated bounceIn"><a href="javascript:void(0)">当前设置操作未完成!</a></span>
+						<span class="pl-msg-warning animated bounceIn"><a href="javascript:void(0)">Operation not completed!</a></span>
 					</div>
 					<div class="pl-msg animated pulse" v-else-if="!disableBtn">
-						<span class="pl-msg-week animated bounceInDown" @click="showWeeklyPlan"><a href="javascript:void(0)" :type="fieldPlan.type">周计划</a></span>
-						<span class="pl-msg-month animated bounceInUp" @click="showMonthlyPlan"><a href="javascript:void(0)" :type="fieldPlan.type">月计划</a></span>
+						<span class="pl-msg-week animated bounceInDown" @click="showWeeklyPlan"><a href="javascript:void(0)" :type="fieldPlan.type">weekly</a></span>
+						<span class="pl-msg-month animated bounceInUp" @click="showMonthlyPlan"><a href="javascript:void(0)" :type="fieldPlan.type">monthly</a></span>
 					</div>
 
 				</div>
@@ -79,8 +79,8 @@
 			mouseenter(val) {
 				//add 'pl-msg-display' Class
 				let target = val.target
-				if(target.querySelector(".field-container-body").className.indexOf("display-config") === -1) {             //若当前container没在设置
-					if(this.activeConfig && this.showConfig) {                //如果container当中有正在设置计划的操作
+				if(target.querySelector(".field-container-body").className.indexOf("display-config") === -1) {             
+					if(this.activeConfig && this.showConfig) {               
 						this.disableBtn = true
 					} else {
 						this.disableBtn = false
@@ -95,7 +95,7 @@
 				// remove 'pl-msg-display' Class
 				let target = val.target
 				if(target.querySelector(".field-container-body").className.indexOf("display-config") === -1) {
-					if(this.activeConfig && this.showConfig) {                //如果container当中有正在设置计划的操作
+					if(this.activeConfig && this.showConfig) {                
 						this.disableBtn = true
 					} else {
 						this.disableBtn = false
@@ -121,11 +121,11 @@
 						data: data
 					}).then((rescode) => {
 						if(rescode === 203) {
-							console.log('显示周计划详情')
+							console.log('Show Details Weekly Package')
 							this.showSnackbar()
 						} else {
-							this.$emit('configPlan',{type: data.type,date: data.date,w_type:'周计划'})
-							console.log('用户暂未设置周计划')
+							this.$emit('configPlan',{type: data.type,date: data.date,w_type:'weekly'})
+							console.log('User has not choose weekly')
 						}
 					}).catch((err) => {
 						console.log(err)
@@ -142,12 +142,12 @@
 						data: data
 					}).then((rescode) => {
 						if(rescode === 203) {
-							console.log('显示月计划详情')
+							console.log('Show monthly details')
 							this.showSnackbar()
 							console.log(this.$store.state.fieldPlans)
 						} else {
-							this.$emit('configPlan',{type: data.type,date: data.date,w_type:'月计划'})
-							console.log('用户暂未设置月计划')
+							this.$emit('configPlan',{type: data.type,date: data.date,w_type:'monthly'})
+							console.log('User has not choose monthly')
 						}
 					}).catch((err) => {
 						console.log(err)
@@ -174,7 +174,7 @@
 					return val
 				}
 			},
-			setPlanNum(val) {                     //设置计划数量
+			setPlanNum(val) {                     
 				const data = {
 					type: this.activeConfig,
 					w_type: this.wType,
@@ -186,11 +186,11 @@
 					data: data
 				}).then((rescode) => {
 					if(rescode === 202) {
-						console.log('设置成功')
+						console.log('Success')
 					} else if(rescode === 400) {
-						console.log('用户不存在')
+						console.log('User not found')
 					} else if(rescode === 402){
-						console.log('错误: '+rescode.name+rescode.message)
+						console.log('error: '+rescode.name+rescode.message)
 					}
 					this.$emit('configPlanOver')
 				})
@@ -264,9 +264,9 @@
 					width:100%;
 					position: relative;
 					border-radius: 10px;
-					-moz-user-select:none;/*火狐*/
-					-webkit-user-select:none;/*webkit浏览器*/
-					-ms-user-select:none;/*IE10*/
+					-moz-user-select:none;
+					-webkit-user-select:none;
+					-ms-user-select:none;
 					user-select:none;
 				}
 				.field-config-body {
@@ -280,9 +280,9 @@
 						height: 40px;
 						position: relative;
 					    font-size: 20px;
-					    -moz-user-select:none;/*火狐*/
-						-webkit-user-select:none;/*webkit浏览器*/
-						-ms-user-select:none;/*IE10*/
+					    -moz-user-select:none;
+						-webkit-user-select:none;
+						-ms-user-select:none;
 						user-select:none;
 					}
 					.toLeft, .toRight {
@@ -363,7 +363,6 @@
 						margin: 0 auto;
 					}
 					.pl-msg {
-						/**background: url(http://demo.lanrenzhijia.com/2014/pic0909/images/jia.png) no-repeat center 80px;**/
 						background-color: #000;
 					    opacity: 0.7;
 					    display: none;

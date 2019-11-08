@@ -8,7 +8,7 @@ export default {
 		const dayOfMonth = today.getDate()
 		let mondayDay,mondayMonth,mondayYear;
 		//1，3，5，7，8，10，12 31日
-		if(dayOfMonth - dayOfWeek < 0) { //该周周一在上个月
+		if(dayOfMonth - dayOfWeek < 0) { 
 			if([2,4,6,9,11].indexOf(month) > -1) {
 				mondayDay = 31 + dayOfMonth - dayOfWeek + 1
 				mondayMonth = this.formatMonthAndDay(month - 1)

@@ -7,18 +7,18 @@ const userSchema = new Schema({
   name: { type: String, required: true },
   pwd: { type: String, required: true},
   age: { type: Number, default: -1},
-  sex: { type: Number, default: -1},                                                          //0 -> '男', 1 -> '女'
+  sex: { type: Number, default: -1},                                                          
   mail: { type: String, default: ''},
   phone: { type: String, default: ''},
   image: { type: String, default: ''},
   intro: { type: String, default: ''},
   plans: [{
   	pNums: [{
-  		p_type: Number,                                                   //训练类型,1-4 分别代表 [引体向上, 俯卧撑, 仰卧起坐, 深蹲]
-  		counts:{ type:Number, default: 0}                               //该训练类型计划数量
+  		p_type: Number,                                                  
+  		counts:{ type:Number, default: 0}                               
   	}],
-  	w_m_type: { type: Number, default: 0},                                  //0代表周计划,1代表月计划
-  	timeStamp: { type:String, required: true, default: '-1'}           //时间戳代表独一无二的计划
+  	w_m_type: { type: Number, default: 0},                                  
+  	timeStamp: { type:String, required: true, default: '-1'}           
   }],
   dayComplete: [{
   	timeId: {type: String, default: '-1', required: true},
@@ -206,7 +206,7 @@ userSchema.statics.setTodayNum = function(data, cb) {
           console.log(err)
           promise.reject(err)
         }
-        if(Bres) {                                   //存在今日的dayComplete
+        if(Bres) {                                 
           Bres.dayComplete.forEach((v) => {
             if(v.timeId === data.date) {
               v.items.push({
@@ -285,7 +285,7 @@ userSchema.statics.getTopWeekRank = function(data, cb) {
   const weekDate = data.weekDate
   let resData = []
   let promise = new mPromise
-  //根据周,月日期进行统计排名
+ 
   this.find({},{'dayComplete':1,'name':1}).where('dayComplete').elemMatch(
     {
       'timeId': {'$gte':weekDate}

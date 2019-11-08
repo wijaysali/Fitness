@@ -1,17 +1,17 @@
 const express = require('express')
 const router = express.Router()
 const userInfoApi = require('../models/dbApi').userInfoAPI
-//根据用户名查询该用户是否存在
+
 router.get('/get_user_by_name', (req, res) => {
 	const uname = req.query.uname
 
 	userInfoApi.findUserByName(uname)
 		.then((data) => {
-			if(data === null) {              //可以注册该用户名
+			if(data === null) {            
 				res.json({
 					rescode: 0
 				})
-			} else if(data && data.name){    //反之,不可以注册该用户名
+			} else if(data && data.name){   
 				res.json({
 					rescode: 1
 				})				
@@ -25,7 +25,7 @@ router.get('/get_user_by_name', (req, res) => {
 router.get('/get_top_week_rank', (req, res) => {
 	const data = req.query
 	userInfoApi.getTopWeekRank(data).onResolve((resdata) => {
-		if(!resdata) {              // 暂无用户数据
+		if(!resdata) {            
 			res.json({'rescode':400})
 		}else if(resdata.name && resdata.name.slice(-5) === 'Error' && resdata.message) {          // return ERROR
 			res.json({'error_type':resdata.name,'error_message':resdata.message,'error_code':402})
@@ -38,7 +38,7 @@ router.get('/get_top_week_rank', (req, res) => {
 router.get('/get_top_month_rank', (req, res) => {
 	const data = req.query
 	userInfoApi.getTopMonthRank(data).onResolve((resdata) => {
-		if(!resdata) {              // 暂无用户数据
+		if(!resdata) {              
 			res.json({'rescode':400})
 		}else if(resdata.name && resdata.name.slice(-5) === 'Error' && resdata.message) {          // return ERROR
 			res.json({'error_type':resdata.name,'error_message':resdata.message,'error_code':402})
@@ -71,7 +71,7 @@ router.post('/login_user', (req, res) => {
 	}
 	userInfoApi.loginUser(data)
 		.then((data) => {
-			if(data !== null) {             //登录成功
+			if(data !== null) {            
 				res.json({
 					userid: data.name,
 					rescode: 0
@@ -139,7 +139,7 @@ router.post('/set_plan_num',(req, res) => {
 		num: req.body.params.num || 0,
 		w_type: req.body.params.w_type
 	}
-	//来自mpromise的回调
+	
 	userInfoApi.setPlanNum(data).onResolve((resdata) => {
 		if(!resdata) {              // resdata == NULL
 			res.json({'rescode':400})
