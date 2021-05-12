@@ -20,7 +20,7 @@
     "mpromise": "^0.5.5",
     "muse-ui": "^2.0.0-rc.5",
     "node-schedule": "^1.2.1",
-    "nodemailer": "^4.0.1",
+    "nodemailer": "^6.4.16",
     "normalize-scss": "^6.0.0",
     "serve-favicon": "^2.3.2",
     "stylus": "^0.54.5",
